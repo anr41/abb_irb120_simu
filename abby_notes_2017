@@ -1,0 +1,87 @@
+abby notes 10/18/17
+
+irb120 simulation:
+ 
+roslaunch abby_gazebo abby_world.launch
+
+  starts up gazebo w/ empty world;
+
+  loads robot model from here:
+  <param name="robot_description"
+	 command="$(find xacro)/xacro.py '$(find abby_description)/urdf/irb120.xacro'" />
+
+  spawns model into gazebo
+
+  runs <include file="$(find abby_control)/launch/irb120_control.launch">
+    this launch file does:
+      loads  abby_control/config/irb120_control.yaml 
+      spawns 6 joint controllers (w/ output to screen)
+      starts robot_state_publisher (output to screen) on topics /abby/joint_states
+
+
+finishes by starting: 
+<node name="ros_i_interface" pkg="example_robot_interface" type="example_robot_interface" respawn="true" output="screen"/>
+
+THEN can run, e.g., 
+
+rosrun example_robot_interface test_traj_sin_sender
+  sends 0 angles to all joints ("home" pose), then sends slow sinusoid to joint6
+
+(note: joint6 vs joint_6 discrepancy--reconcile w/ ABBY ROS-I code)
+
+for physical abby, see YouTube here:
+https://youtu.be/aont5qhqzo4
+1) turn controller on; swith position for "auto"
+ack msg on teach pendant
+power on
+press PP to main
+press "play" on pendant
+
+on pendant:
+should see: ROS_+stateServer and ROS_MotionServer both started, but waiting for connection
+make sure pendant is in "continuous" mode
+
+from ROS terminal (prompt "abby"), start up...
+ roslaunch ...  arm.launch (?)
+ starts up nodes: joint_trajecto0ry_action
+       motion_download_interface
+       robot_state
+
+note: example_robot_interface does not perform interpolation
+  (physical robot controller DOES do interpolation)
+
+
+Pendant should say:
+client at 192.168.0.219  (for both state server and motion server)
+
+From 3/15 ROS Industrial notes:
+ max 100 trajectory points?
+ 
+launch ROS/ABB bridge nodes with:
+  industrial_robot_client/launch/robot_interface_download.launch
+  might need to reset default IP addr, 192.168.0.50
+The "robot_state" node publishes arm state to ROS topic
+the motion_download_interface node subscribes to "joint_path_command:"
+
+optional 3rd node, joint_trajectory_action, uses an action server interface
+
+----------
+ros-industrial/industrial_core
+
+https://github.com/ros-industrial/industrial_core/blob/indigo-devel/industrial_robot_client/src/joint_trajectory_interface.cpp
+
+
+
+-----------recap------------
+roslaunch abby_gazebo abby_world.launch
+rosrun example_robot_interface example_robot_interface
+
+rosrun example_robot_interface test_traj_sender  (sends robot to hard-coded poses)
+OR
+rosrun example_robot_interface test_traj_sin_sender (sends sinusoidal commands to tool flange)
+
+
+
+
+
+
