@@ -11,11 +11,14 @@ This brings up the Gazebo simulation, ready to accept ROS-I style trajectory com
 
 ## Running tests/demos
 in another window,
-`rosrun example_joint_space_planner test_traj_sender`
-(sends hard-coded pose commands to the robot)
+`rosrun example_robot_interface example_robot_interface`
+This starts up an interface similar to ROS-Industrial.
 
+Example trajectories:
+`rosrun example_robot_interface test_traj_sender`
+(sends hard-coded pose commands to the robot)
 OR
-`rosrun example_joint_space_planner test_traj_sin_sender`
+`rosrun example_robot_interface test_traj_sin_sender`
 (sends sinusoidal trajectory to tool flange)
 
 

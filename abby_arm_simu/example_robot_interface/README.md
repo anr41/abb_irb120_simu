@@ -7,12 +7,13 @@ at a fixed update rate, UPDATE_RATE
 Test this node with simple test node, test_traj_sender, which sends a simple, hard-coded trajectory
 
 ## Example usage
-`rosrun example_robot_interface example_robot_interface`
+`roslaunch abby_gazebo abby_world.launch` (or else start up physical robot) 
+`rosrun example_robot_interface example_robot_interface` (or start up the ROS-I bridge)
+
+Then run ROS nodes to command trajectories, e.g.: 
 `rosrun example_robot_interface test_traj_sender`
 
-## Running tests/demos
-Try this with simulator first:
-`roslaunch abby_gazebo abby_world.launch`
+Need to test/revive the following:
 `rosrun example_robot_interface test_abby_sender2 joint_states:= /abby/joint_states`
 Will get prompted for joint numbers and joint angles, then robot will go to these points.
     
