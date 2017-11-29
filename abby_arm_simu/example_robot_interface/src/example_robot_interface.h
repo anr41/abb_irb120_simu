@@ -49,7 +49,7 @@ private:
     ros::Publisher  joint3_command_publisher_;
     ros::Publisher  joint4_command_publisher_;
     ros::Publisher  joint5_command_publisher_;
-    ros::Publisher  joint6_command_publisher_;    
+    ros::Publisher  joint6_command_publisher_;     
     trajectory_msgs::JointTrajectory new_trajectory_;
     trajectory_msgs::JointTrajectoryPoint current_trajectory_point_;
     int npts_traj_;

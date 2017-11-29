@@ -26,8 +26,8 @@
 
 //#include <cwru_srv/simple_bool_service_message.h> // this is a pre-defined service message, contained in shared "cwru_srv" package
 
-#include "trajectory_msgs/JointTrajectory.h"
-#include "trajectory_msgs/JointTrajectoryPoint.h"
+#include <trajectory_msgs/JointTrajectory.h>
+#include <trajectory_msgs/JointTrajectoryPoint.h>
 
 const double UPDATE_RATE=10.0; // define the update rate for sending trajectory points 
 
@@ -50,6 +50,7 @@ private:
     ros::Publisher  joint4_command_publisher_;
     ros::Publisher  joint5_command_publisher_;
     ros::Publisher  joint6_command_publisher_;    
+    ros::Publisher  mergedMesh_command_publisher_; 
     trajectory_msgs::JointTrajectory new_trajectory_;
     trajectory_msgs::JointTrajectoryPoint current_trajectory_point_;
     int npts_traj_;

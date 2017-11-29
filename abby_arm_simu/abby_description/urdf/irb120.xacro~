@@ -246,7 +246,7 @@
     </inertial>
   </link>
   
-  <joint name="joint6" type="continuous">
+  <joint name="joint6" type="fixed">
     <parent link="link6"/>
     <child link="link7"/>
     <origin rpy="0 0 0" xyz="0.072 0 0"/>
@@ -281,14 +281,14 @@
     </inertial>
   </link> 
 
- <!-- <joint name="meshMerge" type="continuous">
+  <joint name="meshMerge" type="continuous">
     <parent link="link7"/>
     <child link="mergedMesh"/>
     <origin rpy="0 -1.5 3.14" xyz="0 0 0"/>
     <axis xyz="1 0 0"/>
      <limit effort="20" lower="-6.98132" upper="6.98132" velocity="7.33038"/>   
     <dynamics damping="0.7"/>
-  </joint> -->
+  </joint>
     
   <transmission name="tran1">
     <type>transmission_interface/SimpleTransmission</type>
@@ -354,4 +354,5 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission> 
+ 
 </robot>

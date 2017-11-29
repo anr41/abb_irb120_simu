@@ -49,7 +49,7 @@ int main(int argc, char** argv)
     new_trajectory.joint_names.push_back("joint_3");
     new_trajectory.joint_names.push_back("joint_4");
     new_trajectory.joint_names.push_back("joint_5");
-    new_trajectory.joint_names.push_back("joint_6");     
+    new_trajectory.joint_names.push_back("joint_6");    
     ros::Rate sleep_timer(10.0); // update rate
     
     // may need this to get publisher advertisement recognized
