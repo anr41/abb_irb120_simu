@@ -266,7 +266,7 @@
     <visual>
       <origin xyz=".02 0.023 .0015" rpy="-1.57 3.14 1.57"/>
       <geometry>
-	<mesh filename="package://abb_common/meshes/irb120/visual/Merged_Mesh.stl" scale="0.001 0.001 0.001"/>
+	<mesh filename="package://abb_common/meshes/irb120/visual/finalMergedMesh.dae" scale="0.001 0.001 0.001"/>
       </geometry>
 	<material name="white"/>
     </visual>
