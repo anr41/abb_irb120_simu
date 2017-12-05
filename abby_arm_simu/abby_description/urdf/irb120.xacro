@@ -255,7 +255,7 @@
     <dynamics damping="0.7"/>
   </joint>
 
-  <link name="mergedMesh">
+  <link name="LBracket">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -266,7 +266,7 @@
     <visual>
       <origin xyz=".02 0.023 .0015" rpy="-1.57 3.14 1.57"/>
       <geometry>
-	<mesh filename="package://abb_common/meshes/irb120/visual/Merged_Mesh.stl" scale="0.001 0.001 0.001"/>
+	<mesh filename="package://abb_common/meshes/irb120/visual/LBracket.stl" scale="0.001 0.001 0.001"/>
       </geometry>
 	<material name="white"/>
     </visual>
@@ -281,13 +281,70 @@
     </inertial>
   </link> 
 
-  <joint name="meshMerge" type="fixed">
+  <link name="sprayGun">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="-.05 0.023 .049" rpy="1.57 3 1.57"/>
+      <geometry>
+	<mesh filename="package://abb_common/meshes/irb120/visual/288048_CAD_model.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+	<material name="grey"/>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+	  ixx="1.0" ixy="0.0" ixz="0.0"
+	  iyy="1.0" iyz="0.0"
+	  izz="1.0"/>
+    </inertial>
+  </link> 
+
+  <link name="paintCloud">
+    <visual>
+      <origin xyz=".02 0.023 .0015" rpy="0 0 0"/>
+      <geometry>
+	<mesh filename="package://abb_common/meshes/irb120/visual/paintTriangle.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+	<material name="red"/>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+	  ixx="1.0" ixy="0.0" ixz="0.0"
+	  iyy="1.0" iyz="0.0"
+	  izz="1.0"/>
+    </inertial>
+  </link> 
+
+  <joint name="connectLBracket" type="fixed">
     <parent link="link7"/>
-    <child link="mergedMesh"/>
+    <child link="LBracket"/>
     <origin rpy="0 -1.5 3.14" xyz="0 0 0"/>
     <axis xyz="1 0 0"/>
-     <limit effort="20" lower="-6.98132" upper="6.98132" velocity="7.33038"/>   
-    <dynamics damping="0.7"/>
+  </joint>
+
+  <joint name="mountGun" type="fixed">
+    <parent link="LBracket"/>
+    <child link="sprayGun"/>
+    <origin rpy="0 -1.5 3.14" xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="cloudOfPaint" type="fixed">
+    <parent link="sprayGun"/>
+    <child link="paintCloud"/>
+    <origin rpy="0 -1.5 3.14" xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
   </joint>
     
   <transmission name="tran1">
