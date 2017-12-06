@@ -288,9 +288,9 @@
 	<box size="0.1 0.1 0.1"/>
       </geometry>
     </collision>
-
+<!--1.79-->
     <visual>
-      <origin xyz="-.01 0.023 .045" rpy="1.57 3 1.57"/>
+      <origin xyz=".021 0.023 .019" rpy="1.65 3.14 1.59"/>
       <geometry>
 	<mesh filename="package://abb_common/meshes/irb120/visual/288048_CAD_model.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -309,7 +309,7 @@
 
   <link name="paintCloud">
     <visual>
-      <origin xyz=".02 0.023 .0015" rpy="0 0 0"/>
+      <origin xyz="-0.005 -.063 0.444" rpy="-1.57 -.1 1.57"/>
       <geometry>
 	<mesh filename="package://abb_common/meshes/irb120/visual/paintTriangle.stl" scale="0.001 0.001 0.001"/>
       </geometry>
